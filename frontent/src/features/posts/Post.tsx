@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 
-function Post() {
-  return (
-    <div><h1>Post</h1></div>
-  )
+function Post(props:any) {
+    const [title, setTitle] = useState(props.post.title);
+    const [body, setBody] = useState(props.post.body);
+
+    const titleElement = <h2 className="title text-start">{props.post.title}</h2>;
+    const bodyElement = <p className="card-text text-start">{props.post.body}</p>;
+    return <div>
+    <div className="row">
+        <div className="col-8">
+            { titleElement }
+        </div>
+    </div>
+      <div className="row">
+          <div className="col-8">
+              { bodyElement }
+          </div>
+      </div>
+</div>;
 }
 
 export default Post
