@@ -2,7 +2,7 @@ import React from 'react'
 
 function Posts() {
   return (
-    <div>posts</div>
+    <div><h1>posts</h1></div>
   )
 }
 
