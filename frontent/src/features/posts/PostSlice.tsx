@@ -35,3 +35,30 @@ const initialState: PostsState = {
     ],
     status: Statuses.Initial
 }
+
+export const postSlice = createSlice({
+    name: "posts",
+    initialState,
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchPostsAsync.pending, (state) => {
+                return produce(state, (draftState) => {
+                    draftState.status = Statuses.Loading;
+                })
+            })
+            .addCase(fetchPostsAsync.fulfilled, (state, action) => {
+                return produce(state, (draftState) => {
+                    draftState.posts = action.payload;
+                    draftState.status = Statuses.UpToDate;
+                })
+            })
+            .addCase(fetchPostsAsync.rejected, (state) => {
+                return produce(state, (draftState) => {
+                    draftState.status = Statuses.Error;
+                })
+            })
+    }
+})
+
+export const {} = postSlice.actions;
